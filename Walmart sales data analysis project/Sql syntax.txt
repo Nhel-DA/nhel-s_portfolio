@@ -1,0 +1,23 @@
+
+Finding the highest salary in a database
+
+Select name 
+from table 
+where salary = (select max(salary) from table)
+
+Counting duplicates in columns
+
+SELECT GROUP_CONCAT(id), name, COUNT(*) c
+FROM documents
+GROUP BY name
+HAVING c > 1;
+
+
+Finding which is duplicated in the table or data
+
+SELECT * FROM TableName INNER JOIN(
+  SELECT DupliactedData FROM TableName GROUP BY DupliactedData HAVING COUNT(DupliactedData) > 1 order by DupliactedData)
+  temp ON TableName.DupliactedData = temp.DupliactedData;
+
+(TableName = the table you are working with.
+DupliactedData = the duplicated data you are looking for.)
